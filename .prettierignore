@@ -1,0 +1,12 @@
+# Ignore build artifacts and dependencies
+.next/
+out/
+node_modules/
+dist/
+
+# Ignore system files
+.DS_Store
+
+# Ignore config and env
+.env*
+coverage/
