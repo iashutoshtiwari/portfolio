@@ -1,6 +1,6 @@
 export const LINKS = {
   MEDIUM: 'https://tiwariashutosh.medium.com/',
-  LINKEDIN: 'https://www.linkedin.com/in/tiwariashutosh/',
+  LINKEDIN: 'https://www.linkedin.com/in/iashutoshtiwari/',
   GITHUB: 'https://github.com/iashutoshtiwari',
   RESUME: '/assets/Ashutosh-Tiwari-Resume.pdf',
   EMAIL_LINK: 'mailto:contact@ashutoshtiwari.dev',
