@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <section id="about" className="px-4 py-20">
+    <section id="about" className="py-20">
       <div className="container mx-auto max-w-4xl">
         <div className="space-y-12">
           {/* Bio Content with Photo */}

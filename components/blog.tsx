@@ -35,7 +35,7 @@ export default function Blog() {
   }, []);
 
   return (
-    <section id="blog" className="px-4 py-20">
+    <section id="blog" className="py-20">
       <div className="container mx-auto max-w-4xl">
         <h2 className="mb-12 text-2xl font-normal">{STRINGS.BLOG_LABEL}</h2>
 

@@ -4,7 +4,7 @@ import { STRINGS } from '@/constants/strings';
 
 export default function Experience() {
   return (
-    <section id="experience" className="bg-muted/20 px-4 py-20">
+    <section id="experience" className="bg-muted/20 py-20">
       <div className="container mx-auto max-w-4xl">
         <h2 className="mb-12 text-2xl font-normal">Experience</h2>
 

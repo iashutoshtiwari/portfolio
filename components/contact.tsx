@@ -60,7 +60,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-muted/20 px-4 py-20">
+    <section id="contact" className="bg-muted/20 py-20">
       <div className="container mx-auto max-w-2xl">
         <h2 className="mb-12 text-2xl font-normal">{STRINGS.CONTACT_LABEL}</h2>
 
