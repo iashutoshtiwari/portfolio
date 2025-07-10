@@ -39,7 +39,7 @@ export default function Blog() {
       <div className="container mx-auto max-w-4xl">
         <h2 className="mb-12 text-2xl font-normal">{STRINGS.BLOG_LABEL}</h2>
 
-        <div className="space-y-8">
+        <div className="space-y-8" aria-busy={loading} aria-live="polite">
           {loading ? (
             <p>{STRINGS.LOADING}</p>
           ) : error ? (
@@ -48,19 +48,38 @@ export default function Blog() {
             <p>{STRINGS.NO_ARTICLES}</p>
           ) : (
             articles.slice(0, 3).map((post, index) => (
-              <article key={index} className="space-y-2">
+              <article key={index} className="space-y-2" aria-labelledby={`blog-title-${index}`}>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                  <h3 className="hover:text-foreground/80 min-w-0 flex-1 text-lg font-normal transition-colors">
-                    {post.title}
+                  <h3
+                    id={`blog-title-${index}`}
+                    className="hover:text-foreground/80 min-w-0 flex-1 text-lg font-normal transition-colors"
+                  >
+                    <a
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Read full article: ${post.title}`}
+                      className="focus:outline focus:outline-offset-2"
+                    >
+                      {post.title}
+                    </a>
                   </h3>
-                  <time className="text-muted-foreground flex-shrink-0 text-sm sm:mt-0.5">
+                  <time
+                    className="text-muted-foreground flex-shrink-0 text-sm sm:mt-0.5"
+                    dateTime={new Date(post.pubDate).toISOString()}
+                  >
                     {post.pubDate}
                   </time>
                 </div>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {post.contentSnippet}
                 </p>
-                <a href={post.link} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={post.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Read more about: ${post.title}`}
+                >
                   <Button
                     variant="link"
                     className="hover:text-foreground/80 h-auto p-0 text-sm font-normal"
@@ -74,7 +93,12 @@ export default function Blog() {
         </div>
 
         <div className="mt-12 text-center">
-          <a href={LINKS.MEDIUM} target="_blank" rel="noopener noreferrer">
+          <a
+            href={LINKS.MEDIUM}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View all posts on Medium"
+          >
             <Button variant="outline" size="sm" className="bg-transparent font-normal">
               {STRINGS.LOAD_MORE_POSTS}
             </Button>

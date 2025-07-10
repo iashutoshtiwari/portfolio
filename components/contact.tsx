@@ -64,7 +64,7 @@ export default function Contact() {
       <div className="container mx-auto max-w-2xl">
         <h2 className="mb-12 text-2xl font-normal">{STRINGS.CONTACT_LABEL}</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form" role="form">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-sm font-normal">
               {STRINGS.LABEL_NAME}
@@ -76,6 +76,8 @@ export default function Contact() {
               onChange={handleChange}
               className="font-mono"
               required
+              aria-required="true"
+              autoComplete="name"
             />
           </div>
 
@@ -91,6 +93,8 @@ export default function Contact() {
               onChange={handleChange}
               className="font-mono"
               required
+              aria-required="true"
+              autoComplete="email"
             />
           </div>
 
@@ -106,11 +110,15 @@ export default function Contact() {
               rows={5}
               className="resize-none font-mono"
               required
+              aria-required="true"
+              autoComplete="off"
             />
           </div>
           {/* Honeypot field - hidden from users but bots will fill it */}
           <div className="hidden">
-            <label htmlFor="honeypot">Leave this field empty</label>
+            <label htmlFor="honeypot" aria-hidden="true">
+              Leave this field empty
+            </label>
             <Input
               id="honeypot"
               name="honeypot"
@@ -119,9 +127,16 @@ export default function Contact() {
               onChange={handleChange}
               tabIndex={-1}
               autoComplete="off"
+              aria-hidden="true"
             />
           </div>
-          <Button type="submit" variant="outline" size="sm" className="bg-transparent font-normal">
+          <Button
+            type="submit"
+            variant="outline"
+            size="sm"
+            className="bg-transparent font-normal"
+            aria-label="Submit contact form"
+          >
             {STRINGS.LABEL_SUBMIT}
           </Button>
         </form>
@@ -133,6 +148,7 @@ export default function Contact() {
             <a
               href={LINKS.EMAIL_LINK}
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="Ashutosh Tiwari's Email"
               className="text-muted-foreground hover:text-foreground flex items-center text-sm transition-colors"
             >
@@ -142,6 +158,7 @@ export default function Contact() {
             <a
               href={LINKS.GITHUB}
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="Ashutosh Tiwari's GitHub"
               className="text-muted-foreground hover:text-foreground flex items-center text-sm transition-colors"
             >
@@ -151,6 +168,7 @@ export default function Contact() {
             <a
               href={LINKS.LINKEDIN}
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="Ashutosh Tiwari's LinkedIn"
               className="text-muted-foreground hover:text-foreground flex items-center text-sm transition-colors"
             >
@@ -160,6 +178,7 @@ export default function Contact() {
             <a
               href={LINKS.X}
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="Ashutosh Tiwari's Twitter"
               className="text-muted-foreground hover:text-foreground flex items-center text-sm transition-colors"
             >
