@@ -33,13 +33,19 @@ npm install
 
 ### 3. Add Environment Variables
 
-Create a `.env.local` file in the root and add your Resend API key:
+Create a .env.local file in the root of your project and add the following:
 
 ```env
+# Resend email API key for contact form
 RESEND_API_KEY=your_resend_api_key_here
+
+# Google Analytics 4 Measurement ID (e.g. G-XXXXXXX123)
+NEXT_PUBLIC_GA_ID=your_ga_measurement_id_here
 ```
 
-> You can get your API key from [resend.com](https://resend.com/)
+> Where to get these:
+> Resend API Key: [resend.com](https://resend.com/)
+> Google Analytics Measurement ID: [analytics.google.com](https://analytics.google.com/)
 
 ### 4. Start the Dev Server
 
