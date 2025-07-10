@@ -2,6 +2,7 @@ import type React from 'react';
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
 import { JetBrains_Mono } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Toaster position="top-center" theme="system" />
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
     </html>
   );
 }
