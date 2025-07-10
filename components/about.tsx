@@ -1,5 +1,6 @@
 import { STRINGS } from '@/constants/strings';
 import Image from 'next/image';
+import { ConfettiEasterEgg } from './ui/easter-egg';
 
 export default function About() {
   return (
@@ -19,16 +20,19 @@ export default function About() {
               </div>
 
               {/* Photo */}
+
               <div className="order-1 mb-6 flex justify-center md:order-2 md:mb-0 md:justify-end">
-                <div className="bg-muted/50 border-border group h-32 w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-full border md:h-48 md:w-48">
-                  <Image
-                    src="/profile.jpg"
-                    alt="Ashutosh Tiwari"
-                    width={192}
-                    height={192}
-                    className="h-full w-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0"
-                  />
-                </div>
+                <ConfettiEasterEgg>
+                  <div className="bg-muted/50 border-border group h-32 w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-full border md:h-48 md:w-48">
+                    <Image
+                      src="/profile.jpg"
+                      alt="Ashutosh Tiwari"
+                      width={192}
+                      height={192}
+                      className="h-full w-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0"
+                    />
+                  </div>
+                </ConfettiEasterEgg>
               </div>
             </div>
 

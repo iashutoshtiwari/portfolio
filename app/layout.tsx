@@ -1,5 +1,6 @@
 import type React from 'react';
 import type { Metadata } from 'next';
+import { Toaster } from 'sonner';
 import { JetBrains_Mono } from 'next/font/google';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${jetbrainsMono.variable} font-mono`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
+          <Toaster position="top-center" theme="system" />
         </ThemeProvider>
       </body>
     </html>
