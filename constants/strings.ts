@@ -100,7 +100,7 @@ export const STRINGS = {
   X: 'Twitter',
 
   /* Footer Section */
-  FOOTER_COPYRIGHT: `© ${new Date().getFullYear()} Ashutosh Tiwari. All rights reserved.`,
+  FOOTER_COPYRIGHT: `© ${new Date().getFullYear()} Ashutosh Tiwari`,
   FOOTER_SOURCE: '(Source)',
 
   /* EMAIL API */
