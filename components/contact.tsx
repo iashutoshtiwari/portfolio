@@ -1,13 +1,12 @@
 'use client';
 
-import type React from 'react';
-
 import { useState } from 'react';
+import { IconBrandGithub, IconBrandLinkedin, IconMail, IconBrandX } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { IconBrandGithub, IconBrandLinkedin, IconMail, IconBrandX } from '@tabler/icons-react';
+import Spinner from '@/components/ui/spinner';
 import { STRINGS } from '@/constants/strings';
 import { LINKS } from '@/constants/links';
 
@@ -19,6 +18,8 @@ export default function Contact() {
     honeypot: '', // Honeypot field for spam prevention
   });
 
+  const [loading, setLoading] = useState(false); // <-- Add loading state
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -28,27 +29,33 @@ export default function Contact() {
       return;
     }
 
-    console.log('Form submitted:', formData);
+    setLoading(true); // Start loading
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (res?.ok) {
-      // Show success message
-      alert(STRINGS.FORM_SUCCESS);
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-        honeypot: '',
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-    } else {
+
+      if (res?.ok) {
+        // Show success message
+        alert(STRINGS.FORM_SUCCESS);
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+          honeypot: '',
+        });
+      } else {
+        alert(STRINGS.FORM_ERROR);
+      }
+    } catch (err) {
       alert(STRINGS.FORM_ERROR);
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
@@ -78,6 +85,7 @@ export default function Contact() {
               required
               aria-required="true"
               autoComplete="name"
+              disabled={loading}
             />
           </div>
 
@@ -95,6 +103,7 @@ export default function Contact() {
               required
               aria-required="true"
               autoComplete="email"
+              disabled={loading}
             />
           </div>
 
@@ -112,6 +121,7 @@ export default function Contact() {
               required
               aria-required="true"
               autoComplete="off"
+              disabled={loading}
             />
           </div>
           {/* Honeypot field - hidden from users but bots will fill it */}
@@ -128,15 +138,18 @@ export default function Contact() {
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"
+              disabled={loading}
             />
           </div>
           <Button
             type="submit"
             variant="outline"
             size="sm"
-            className="bg-transparent font-normal"
+            className="flex items-center bg-transparent font-normal"
             aria-label="Submit contact form"
+            disabled={loading}
           >
+            {loading && <Spinner />}
             {STRINGS.LABEL_SUBMIT}
           </Button>
         </form>
